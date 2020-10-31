@@ -5,7 +5,7 @@ self-contained. It can be used to read and write YAML.
 
 ## Writing YAML
 
-The example below writes out YAML for the given object (in this case a string).
+The example below writes out the Java String as YAML.
 
 ```java
   StringWriter stringWriter = new StringWriter();
@@ -14,6 +14,8 @@ The example below writes out YAML for the given object (in this case a string).
 ```
 
 ## Reading YAML
+
+The example below reads in the YAML as a Java String 
 
 ```java
   StringReader stringReader = new StringReader("'this is a YAML string'");
