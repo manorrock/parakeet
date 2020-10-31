@@ -15,7 +15,7 @@ The example below writes out the Java String as YAML.
 
 ## Reading YAML
 
-The example below reads in the YAML as a Java String 
+The example below reads in the YAML as a Java String.
 
 ```java
   StringReader stringReader = new StringReader("'this is a YAML string'");
