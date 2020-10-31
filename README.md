@@ -33,9 +33,6 @@ The example below reads in the YAML as a Java String
   </dependency>
 ```
 
-Where y is the original release year, m is the original release month, and p
-is the patch version (original release would have patch version 0).
-
 ## How do I contribute?
 
 See [Contributing](CONTRIBUTING.md)
