@@ -23,6 +23,19 @@ The example below reads in the YAML as a Java String
   String reader.readObject(String.class.getName());
 ```
 
+## Maven dependency
+
+```xml
+  <dependency>
+    <groupId>com.manorrock.parakeet</groupId>
+    <artifactId>parakeet</artifactId>
+    <version>y.m.p</version>
+  </dependency>
+```
+
+Where y is the original release year, m is the original release month, and p
+is the patch version (original release would have patch version 0).
+
 ## How do I contribute?
 
 See [Contributing](CONTRIBUTING.md)
