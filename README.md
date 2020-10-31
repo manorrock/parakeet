@@ -22,3 +22,17 @@ The example below reads in the YAML as a Java String
   YAMLReader reader = new YAMLReader(stringReader);
   String reader.readObject(String.class.getName());
 ```
+
+## How do I contribute?
+
+See [Contributing](CONTRIBUTING.md)
+
+## Our code of Conduct
+
+See [Code of Conduct](CODE_OF_CONDUCT.md)
+
+## Important notice
+
+Note if you file issues, answer questions and/or issue pull requests you agree
+that those contributions will be owned by Manorrock.com and that Manorrock.com
+can use those contributions in any manner Manorrock.com so desires.
