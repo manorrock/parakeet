@@ -23,7 +23,9 @@ The example below reads in the YAML as a Java String
   String reader.readObject(String.class.getName());
 ```
 
-## Maven dependency
+## Maven coordinates
+
+The Maven coordinates are as follows.
 
 ```xml
   <dependency>
@@ -32,6 +34,9 @@ The example below reads in the YAML as a Java String
     <version>y.m.p</version>
   </dependency>
 ```
+
+Please see [Maven central](https://repo1.maven.org/maven2/com/manorrock/parakeet)
+for the latest version information
 
 ## How do I contribute?
 
