@@ -1,6 +1,6 @@
 # Manorrock Parakeet
 
-Manorrock Parakeet delivers you a light-weight YAML library that is 100% 
+Manorrock Parakeet delivers you with a light-weight YAML library that is 100% 
 self-contained. It can be used to read and write YAML.
 
 ## Writing YAML
