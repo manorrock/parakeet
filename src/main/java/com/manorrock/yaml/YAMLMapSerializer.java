@@ -40,7 +40,7 @@ import java.util.Map.Entry;
  *
  * @author Manfred Riem (mriem@manorrock.com)
  */
-class YAMLMapSerializer implements YAMLSerializer {
+public class YAMLMapSerializer implements YAMLSerializer {
 
     @Override
     public void writeTo(Writer writer, Object object,

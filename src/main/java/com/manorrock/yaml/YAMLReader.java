@@ -60,6 +60,7 @@ public class YAMLReader extends Reader {
     public YAMLReader(Reader reader) {
         this.reader = new LineNumberReader(reader);
         this.deserializers = new HashMap<>();
+        this.deserializers.put(Boolean.class.getName(), new YAMLBooleanDeserializer());
         this.deserializers.put(HashMap.class.getName(), new YAMLMapDeserializer());
         this.deserializers.put(Number.class.getName(), new YAMLNumberDeserializer());
         this.deserializers.put(String.class.getName(), new YAMLStringDeserializer());
@@ -79,6 +80,15 @@ public class YAMLReader extends Reader {
     @Override
     public void close() throws IOException {
         reader.close();
+    }
+    
+    /**
+     * Get the deserializers.
+     * 
+     * @return the deserializers.
+     */
+    public Map<String, YAMLDeserializer> getDeserializers() {
+        return deserializers;
     }
 
     @Override

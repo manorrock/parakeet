@@ -34,19 +34,19 @@ package com.manorrock.yaml;
  * 
  * @author Manfred Riem (mriem@manorrock.com)
  */
-public @interface YAMLDeserializerType {
+public @interface YAMLDeserializerHint {
     
     /**
      * Get the type.
      * 
      * @return the type.
      */
-    String type() default "";
+    Class type() default Object.class;
     
     /**
      * Get the generic type.
      * 
      * @return the generic type.
      */
-    String genericType() default "";
+    Class genericType() default Object.class;
 }

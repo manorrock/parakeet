@@ -30,22 +30,25 @@
 package com.manorrock.yaml;
 
 import java.io.IOException;
-import java.io.Writer;
+import java.io.LineNumberReader;
 
 /**
- * The YAML string serializer.
+ * The YAML Boolean deserializer.
  *
  * @author Manfred Riem (mriem@manorrock.com)
  */
-public class YAMLStringSerializer implements YAMLScalarSerializer {
+public class YAMLBooleanDeserializer implements YAMLDeserializer {
 
     @Override
-    public void writeTo(Writer writer, Object object,
-            YAMLSerializerContext context) throws IOException {
-
-        String string = (String) object;
-        writer.write("'");
-        writer.write(string);
-        writer.write("'");
+    public Object readFrom(LineNumberReader reader, YAMLDeserializerContext context) throws IOException {
+        Boolean booleanValue = null;
+        String line = context.getBacktrackLine();
+        if (line == null) {
+            line = reader.readLine();
+        }
+        if (line != null) {
+            booleanValue = Boolean.parseBoolean(line.trim());
+        }
+        return booleanValue;
     }
 }

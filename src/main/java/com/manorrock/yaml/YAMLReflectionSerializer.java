@@ -40,7 +40,7 @@ import java.util.Iterator;
  *
  * @author Manfred Riem (mriem@manorrock.com)
  */
-class YAMLReflectionSerializer implements YAMLSerializer {
+public class YAMLReflectionSerializer implements YAMLSerializer {
 
     @Override
     public void writeTo(Writer writer, Object object,
@@ -57,7 +57,7 @@ class YAMLReflectionSerializer implements YAMLSerializer {
             valueContext.setIndent(context.getIndent() + 2);
             while (fields.hasNext()) {
                 Field field = fields.next();
-                if (!field.isAccessible()) {
+                if (!field.canAccess(object)) {
                     field.setAccessible(true);
                 }
                 Object value = field.get(object);

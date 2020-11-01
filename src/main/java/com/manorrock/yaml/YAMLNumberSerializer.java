@@ -34,15 +34,15 @@ import java.io.Writer;
 
 /**
  * The YAML number serializer.
- * 
+ *
  * @author Manfred Riem (mriem@manorrock.com)
  */
-class YAMLNumberSerializer implements YAMLScalarSerializer{
+public class YAMLNumberSerializer implements YAMLScalarSerializer {
 
     @Override
-    public void writeTo(Writer writer, Object object, 
+    public void writeTo(Writer writer, Object object,
             YAMLSerializerContext context) throws IOException {
-     
+
         Number number = (Number) object;
         writer.write(number.toString());
     }

@@ -39,7 +39,7 @@ import java.util.Iterator;
  *
  * @author Manfred Riem (mriem@manorrock.com)
  */
-class YAMLCollectionSerializer implements YAMLSerializer {
+public class YAMLCollectionSerializer implements YAMLSerializer {
 
     @Override
     public void writeTo(Writer writer, Object object,

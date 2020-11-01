@@ -37,7 +37,7 @@ import java.io.Writer;
  *
  * @author Manfred Riem (mriem@manorrock.com)
  */
-class YAMLBooleanSerializer implements YAMLScalarSerializer {
+public class YAMLBooleanSerializer implements YAMLScalarSerializer {
 
     @Override
     public void writeTo(Writer writer, Object object,

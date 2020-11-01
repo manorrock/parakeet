@@ -42,6 +42,7 @@ public class YAMLDemoPojo1 {
     /**
      * Stores the list.
      */
+    @YAMLDeserializerHint(genericType = String.class)
     private List<String> list;
 
     /**

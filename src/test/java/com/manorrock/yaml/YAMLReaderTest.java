@@ -104,4 +104,16 @@ public class YAMLReaderTest {
         String string = (String) reader.readObject(String.class.getName());
         assertEquals("a string", string);
     }
+
+    /**
+     * Test readObject method.
+     *
+     * @throws Exception when a serious error occurs.
+     */
+    @Test
+    public void testReadObjectUsingABoolean() throws Exception {
+        YAMLReader reader = new YAMLReader(new StringReader("true"));
+        Boolean booleanValue = (Boolean) reader.readObject(Boolean.class.getName());
+        assertTrue(booleanValue);
+    }
 }

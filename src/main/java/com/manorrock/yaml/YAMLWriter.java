@@ -106,6 +106,15 @@ public class YAMLWriter extends Writer {
     }
 
     /**
+     * Get the serializers.
+     * 
+     * @return the serializers.
+     */
+    public Map<String, YAMLSerializer> getSerializers() {
+        return serializers;
+    }
+    
+    /**
      * Write the buffer.
      *
      * @param buffer the buffer.
