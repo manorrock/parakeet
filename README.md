@@ -20,7 +20,7 @@ The example below reads in the YAML as a Java String.
 ```java
   StringReader stringReader = new StringReader("'this is a YAML string'");
   YAMLReader reader = new YAMLReader(stringReader);
-  String reader.readObject(String.class.getName());
+  String string = reader.readObject(String.class.getName());
 ```
 
 ## Maven coordinates
