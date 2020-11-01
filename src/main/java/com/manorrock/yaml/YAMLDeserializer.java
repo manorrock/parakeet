@@ -31,72 +31,22 @@ package com.manorrock.yaml;
 
 import java.io.IOException;
 import java.io.LineNumberReader;
-import java.io.Reader;
-import java.util.HashMap;
-import java.util.Map;
 
 /**
- * The YAML reader.
- *
+ * A YAML deserializer.
+ * 
  * @author Manfred Riem (mriem@manorrock.com)
  */
-public class YAMLReader extends Reader {
-    
-    /**
-     * Stores the deserializers.
-     */
-    private final Map<String, YAMLDeserializer> deserializers;
+public interface YAMLDeserializer {
 
     /**
-     * Stores the reader we delegate to.
-     */
-    private final LineNumberReader reader;
-    
-    /**
-     * Constructor.
+     * Read the object from the reader.
      * 
      * @param reader the reader.
-     */
-    public YAMLReader(Reader reader) {
-        this.reader = new LineNumberReader(reader);
-        this.deserializers = new HashMap<>();
-        this.deserializers.put(HashMap.class.getName(), new YAMLMapDeserializer());
-        this.deserializers.put(Number.class.getName(), new YAMLNumberDeserializer());
-        this.deserializers.put(String.class.getName(), new YAMLStringDeserializer());
-    }
-    
-    /**
-     * Constructor.
-     * 
-     * @param reader the reader.
-     * @param deserializers the deserializer.
-     */
-    public YAMLReader(Reader reader, Map<String, YAMLDeserializer> deserializers) {
-        this.reader = new LineNumberReader(reader);
-        this.deserializers = deserializers;
-    }
-
-    @Override
-    public void close() throws IOException {
-        reader.close();
-    }
-
-    @Override
-    public int read(char[] buffer, int offset, int length) throws IOException {
-        return reader.read(buffer, offset, length);
-    }
-    
-    /**
-     * Read the object.
-     * 
-     * @param className the class name.
+     * @param context the deserialization context.
      * @return the object.
-     * @throws IOException when an I/O error occurs.
+     * @throws IOException when I/O error occurs.
      */
-    public Object readObject(String className) throws IOException {
-        YAMLDeserializerContext context = new YAMLDeserializerContext();
-        context.setDeserializers(deserializers);
-        YAMLDeserializer deserializer = context.getDeserializer(className);
-        return deserializer.readFrom(reader, context);
-    }
+    public Object readFrom(LineNumberReader reader, 
+            YAMLDeserializerContext context) throws IOException;
 }
