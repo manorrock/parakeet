@@ -33,6 +33,7 @@ import java.io.StringReader;
 import java.util.HashMap;
 import java.util.Map;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import org.junit.jupiter.api.Test;
 
@@ -115,5 +116,31 @@ public class YAMLReaderTest {
         YAMLReader reader = new YAMLReader(new StringReader("true"));
         Boolean booleanValue = (Boolean) reader.readObject(Boolean.class.getName());
         assertTrue(booleanValue);
+    }
+
+    /**
+     * Test readObject method.
+     *
+     * @throws Exception when a serious error occurs.
+     */
+    @Test
+    public void testReadObjectUsingAMapWithAnInteger() throws Exception {
+        YAMLReader reader = new YAMLReader(new StringReader("map: 12345"));
+        Map<String, Object> map = (Map<String, Object>) reader.readObject(HashMap.class.getName());
+        assertTrue(map.containsKey("map"));
+        assertEquals(12345L, map.get("map"));
+    }
+
+    /**
+     * Test readObject method.
+     *
+     * @throws Exception when a serious error occurs.
+     */
+    @Test
+    public void testReadObjectUsingAMapWithAFloat() throws Exception {
+        YAMLReader reader = new YAMLReader(new StringReader("map: 12.345"));
+        Map<String, Object> map = (Map<String, Object>) reader.readObject(HashMap.class.getName());
+        assertTrue(map.containsKey("map"));
+        assertEquals(12.345d, map.get("map"));
     }
 }

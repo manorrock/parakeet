@@ -42,8 +42,8 @@ public class YAMLDemoPojo1 {
     /**
      * Stores the list.
      */
-    @YAMLDeserializerHint(genericType = String.class)
-    private List<String> list;
+    @YAMLDeserializerHint(elementType = String.class)
+    private ArrayList<String> list;
 
     /**
      * Constructor.
@@ -67,7 +67,7 @@ public class YAMLDemoPojo1 {
      * 
      * @param list the list.
      */
-    public void setList(List<String> list) {
+    public void setList(ArrayList<String> list) {
         this.list = list;
     }
 }

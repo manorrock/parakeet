@@ -29,24 +29,42 @@
  */
 package com.manorrock.yaml;
 
+import java.lang.annotation.Retention;
+import static java.lang.annotation.RetentionPolicy.RUNTIME;
+
 /**
  * The YAML deserializer type annotation.
  * 
- * @author Manfred Riem (mriem@manorrock.com)
+* @author Manfred Riem (mriem@manorrock.com)
  */
+@Retention(RUNTIME)
 public @interface YAMLDeserializerHint {
     
     /**
-     * Get the type.
+     * Overrides the type to use for the given field.
      * 
      * @return the type.
      */
     Class type() default Object.class;
     
     /**
-     * Get the generic type.
+     * Overrides the element type to use for the element in a collection. 
      * 
      * @return the generic type.
      */
-    Class genericType() default Object.class;
+    Class elementType() default Object.class;
+
+    /**
+     * Overrides the key type to use for the key in a map. 
+     * 
+     * @return the generic type.
+     */
+    Class keyType() default Object.class;
+
+    /**
+     * Overrides the value type to use for the value in map. 
+     * 
+     * @return the generic type.
+     */
+    Class valueType() default Object.class;
 }

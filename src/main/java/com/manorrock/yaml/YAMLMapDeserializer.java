@@ -85,7 +85,11 @@ public class YAMLMapDeserializer implements YAMLDeserializer {
                         valueContext.setBacktrackLine(valueString);
                         value = deserializer.readFrom(reader, valueContext);
                     } else if (!valueString.trim().equals("")) {
-                        // parse scalar value.
+                        YAMLDeserializer deserializer = context.getDeserializer(Number.class.getName());
+                        YAMLDeserializerContext valueContext = new YAMLDeserializerContext(context);
+                        valueContext.setBacktrackLine(valueString);
+                        value = deserializer.readFrom(reader, valueContext);
+                        
                     } else {
                         YAMLDeserializerContext valueContext = new YAMLDeserializerContext(context);
                         valueContext.setIndent(valueContext.getIndent() + 2);

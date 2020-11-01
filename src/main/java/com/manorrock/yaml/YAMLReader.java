@@ -64,6 +64,7 @@ public class YAMLReader extends Reader {
         this.deserializers.put(HashMap.class.getName(), new YAMLMapDeserializer());
         this.deserializers.put(Number.class.getName(), new YAMLNumberDeserializer());
         this.deserializers.put(String.class.getName(), new YAMLStringDeserializer());
+        this.deserializers.put("*", new YAMLReflectionDeserializer());
     }
     
     /**
@@ -107,6 +108,9 @@ public class YAMLReader extends Reader {
         YAMLDeserializerContext context = new YAMLDeserializerContext();
         context.setDeserializers(deserializers);
         YAMLDeserializer deserializer = context.getDeserializer(className);
+        if (deserializer instanceof YAMLReflectionDeserializer) {
+            context.setType(className);
+        }
         return deserializer.readFrom(reader, context);
     }
 }

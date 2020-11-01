@@ -52,6 +52,11 @@ public class YAMLDeserializerContext {
      * Stores the back track line.
      */
     private String backtrackLine;
+    
+    /**
+     * Stores the type.
+     */
+    private String type;
 
     /**
      * Constructor.
@@ -113,6 +118,15 @@ public class YAMLDeserializerContext {
         }
         return indentString.toString();
     }
+    
+    /**
+     * Get the type.
+     * 
+     * @return the type.
+     */
+    public String getType() {
+        return type;
+    }
 
     /**
      * Set the backtrack line.
@@ -139,5 +153,14 @@ public class YAMLDeserializerContext {
      */
     public void setIndent(int indent) {
         this.indent = indent;
+    }
+    
+    /**
+     * Set the type.
+     * 
+     * @param type the type.
+     */
+    public void setType(String type) {
+        this.type = type;
     }
 }

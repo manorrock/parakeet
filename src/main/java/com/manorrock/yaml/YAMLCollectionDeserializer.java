@@ -31,26 +31,19 @@ package com.manorrock.yaml;
 
 import java.io.IOException;
 import java.io.LineNumberReader;
+import java.util.ArrayList;
+import java.util.Collection;
 
 /**
- * The YAML Number deserializer.
+ * The YAML Collection Deserializer.
  *
  * @author Manfred Riem (mriem@manorrock.com)
  */
-public class YAMLNumberDeserializer implements YAMLDeserializer {
+public class YAMLCollectionDeserializer implements YAMLDeserializer {
 
     @Override
     public Object readFrom(LineNumberReader reader, YAMLDeserializerContext context) throws IOException {
-        Object result;
-        String line = context.getBacktrackLine();
-        if (line == null) {
-            line = reader.readLine();
-        }
-        if (line != null && line.contains(".")) {
-            result = Double.parseDouble(line.trim());
-        } else {
-            result = Long.parseLong(line.trim());
-        }
-        return result;
+        Collection collection = new ArrayList();
+        return collection;
     }
 }
