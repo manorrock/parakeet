@@ -30,10 +30,11 @@
 package com.manorrock.yaml;
 
 import java.io.StringReader;
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import org.junit.jupiter.api.Test;
 
@@ -142,5 +143,19 @@ public class YAMLReaderTest {
         Map<String, Object> map = (Map<String, Object>) reader.readObject(HashMap.class.getName());
         assertTrue(map.containsKey("map"));
         assertEquals(12.345d, map.get("map"));
+    }
+    
+    
+
+    /**
+     * Test readObject method.
+     *
+     * @throws Exception when a serious error occurs.
+     */
+    @Test
+    public void testReadObjectUsingAList() throws Exception {
+        YAMLReader reader = new YAMLReader(new StringReader(""));
+        Collection collection = (Collection) reader.readObject(ArrayList.class.getName());
+        assertTrue(collection instanceof ArrayList);
     }
 }

@@ -31,6 +31,7 @@ package com.manorrock.yaml;
 
 import java.io.IOException;
 import java.io.LineNumberReader;
+import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.Collection;
 
@@ -43,7 +44,20 @@ public class YAMLCollectionDeserializer implements YAMLDeserializer {
 
     @Override
     public Object readFrom(LineNumberReader reader, YAMLDeserializerContext context) throws IOException {
-        Collection collection = new ArrayList();
+        Collection collection;
+        if (context.getType() != null) {
+            try {
+                Class clazz = Class.forName(context.getType());
+                collection = (Collection) clazz.getDeclaredConstructor().newInstance();
+            } catch(ClassNotFoundException | NoSuchMethodException |
+                    InstantiationException | IllegalAccessException |
+                    InvocationTargetException e) {
+                throw new IOException("An error occurred reading around line " 
+                        + reader.getLineNumber(), e);
+            }
+        } else {
+            collection = new ArrayList();
+        }
         return collection;
     }
 }

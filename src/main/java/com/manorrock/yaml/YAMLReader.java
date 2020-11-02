@@ -32,6 +32,7 @@ package com.manorrock.yaml;
 import java.io.IOException;
 import java.io.LineNumberReader;
 import java.io.Reader;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -60,6 +61,7 @@ public class YAMLReader extends Reader {
     public YAMLReader(Reader reader) {
         this.reader = new LineNumberReader(reader);
         this.deserializers = new HashMap<>();
+        this.deserializers.put(ArrayList.class.getName(), new YAMLCollectionDeserializer());
         this.deserializers.put(Boolean.class.getName(), new YAMLBooleanDeserializer());
         this.deserializers.put(HashMap.class.getName(), new YAMLMapDeserializer());
         this.deserializers.put(Number.class.getName(), new YAMLNumberDeserializer());

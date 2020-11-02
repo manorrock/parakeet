@@ -35,8 +35,10 @@ The Maven coordinates are as follows.
   </dependency>
 ```
 
+<!--
 Please see [Maven central](https://repo1.maven.org/maven2/com/manorrock/yaml)
 for the latest version information
+  -->
 
 ## How do I contribute?
 
