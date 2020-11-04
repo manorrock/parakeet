@@ -4,7 +4,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.manorrock.yaml</groupId>
     <artifactId>yaml</artifactId>
-    <version>20.11.0-SNAPSHOT</version>
+    <version>20.11.2-SNAPSHOT</version>
     <packaging>jar</packaging>
     <name>Manorrock Parakeet</name>
     <description>
@@ -153,6 +153,7 @@
                     <plugin>
                         <groupId>org.apache.maven.plugins</groupId>
                         <artifactId>maven-gpg-plugin</artifactId>
+                        <version>1.6</version>
                         <executions>
                             <execution>
                                 <id>sign-artifacts</id>
@@ -176,4 +177,9 @@
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
+    <scm>
+        <connection>scm:git:git://github.com/manorrock/parakeet.git</connection>
+        <developerConnection>scm:git:git@github.com:manorrock/parakeet.git</developerConnection>
+        <url>https://github.com/manorrock/parakeet</url>
+    </scm>
 </project>
