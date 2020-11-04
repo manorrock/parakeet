@@ -57,7 +57,7 @@ public class YAMLReflectionSerializer implements YAMLSerializer {
             valueContext.setIndent(context.getIndent() + 2);
             while (fields.hasNext()) {
                 Field field = fields.next();
-                if (!field.canAccess(object)) {
+                if (!field.isAccessible()) {
                     field.setAccessible(true);
                 }
                 Object value = field.get(object);
