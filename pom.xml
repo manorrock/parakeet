@@ -28,6 +28,9 @@
                         <id>default-compile</id>
                         <configuration>
                             <release>9</release>
+                            <includes>
+                                <include>module-info.java</include>
+                            </includes>
                         </configuration>
                     </execution>
                     <execution>
@@ -39,6 +42,8 @@
                             <excludes>
                                 <exclude>module-info.java</exclude>
                             </excludes>
+                            <source>1.8</source>
+                            <target>1.8</target>
                         </configuration>
                     </execution>
                 </executions>
