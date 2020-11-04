@@ -30,6 +30,7 @@
 package com.manorrock.yaml;
 
 import java.io.IOException;
+import java.io.StringWriter;
 import java.io.Writer;
 import java.util.Collection;
 import java.util.Iterator;
@@ -51,8 +52,13 @@ public class YAMLCollectionSerializer implements YAMLSerializer {
             Object element = iterator.next();
             writer.write(context.getIndentString());
             writer.write("- ");
+            StringWriter stringWriter = new StringWriter();
+            YAMLWriter elementWriter = new YAMLWriter(stringWriter);
             YAMLSerializer serializer = context.getSerializer(element.getClass().getName());
-            serializer.writeTo(writer, element, context);
+            YAMLSerializerContext elementContext = new YAMLSerializerContext(context);
+            elementContext.setIndent(context.getIndent() + 2);
+            serializer.writeTo(elementWriter, element, elementContext);
+            writer.write(stringWriter.toString().trim());
             if (iterator.hasNext()) {
                 writer.write("\n");
             }

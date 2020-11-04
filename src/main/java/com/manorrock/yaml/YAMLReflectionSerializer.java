@@ -63,7 +63,7 @@ public class YAMLReflectionSerializer implements YAMLSerializer {
                 Object value = field.get(object);
                 if (value != null) {
                     writer.write(context.getIndentString());
-                    writer.write(field.getName());
+                    writer.write(getName(field));
                     writer.write(": ");
                     YAMLSerializer serializer = context.getSerializer(value.getClass().getName());
                     if (!(serializer instanceof YAMLScalarSerializer)) {
@@ -78,5 +78,22 @@ public class YAMLReflectionSerializer implements YAMLSerializer {
         } catch (IllegalArgumentException | IllegalAccessException ex) {
             throw new IOException("Unable to serializer: " + object, ex);
         }
+    }
+    
+    /**
+     * Get the name for the field.
+     * 
+     * @param field the field.
+     * @return the name.
+     */
+    private String getName(Field field) {
+        String name = field.getName();
+        if (field.isAnnotationPresent(YAMLSerializerHint.class)) {
+            YAMLSerializerHint hint = field.getAnnotation(YAMLSerializerHint.class);
+            if (!hint.name().equals("")) {
+                name = hint.name();
+            }
+        }
+        return name;
     }
 }

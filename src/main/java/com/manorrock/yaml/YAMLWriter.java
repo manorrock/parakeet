@@ -71,6 +71,7 @@ public class YAMLWriter extends Writer {
         this.serializers.put(Integer.class.getName(), numberSerializer);
         this.serializers.put(LinkedHashMap.class.getName(), mapSerializer);
         this.serializers.put(String.class.getName(), new YAMLStringSerializer());
+        this.serializers.put(YAMLLiteralBlock.class.getName(), new YAMLLiteralBlockSerializer());
         this.serializers.put("*", new YAMLReflectionSerializer());
     }
 

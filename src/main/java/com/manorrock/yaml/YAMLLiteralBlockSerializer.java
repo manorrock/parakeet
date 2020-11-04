@@ -30,42 +30,32 @@
 package com.manorrock.yaml;
 
 import java.io.IOException;
+import java.io.LineNumberReader;
+import java.io.StringReader;
 import java.io.Writer;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Map.Entry;
 
 /**
- * The YAML Map Serializer.
+ * The YAML literal block serializer.
  *
  * @author Manfred Riem (mriem@manorrock.com)
  */
-public class YAMLMapSerializer implements YAMLSerializer {
+public class YAMLLiteralBlockSerializer implements YAMLScalarSerializer {
 
     @Override
     public void writeTo(Writer writer, Object object,
             YAMLSerializerContext context) throws IOException {
 
-        Map<String, Object> map = (Map<String, Object>) object;
-        YAMLSerializerContext valueContext = new YAMLSerializerContext(context);
-        valueContext.setIndent(context.getIndent() + 2);
-        Iterator<Entry<String, Object>> iterator = map.entrySet().iterator();
-        while (iterator.hasNext()) {
-            Entry<String, Object> entry = iterator.next();
-            String key = entry.getKey();
-            Object value = entry.getValue();
-            writer.write(context.getIndentString());
-            writer.write(key);
-            writer.write(": ");
-            if (value != null) {
-                YAMLSerializer serializer = context.getSerializer(value.getClass().getName());
-                if (!(serializer instanceof YAMLScalarSerializer)) {
-                    writer.write("\n");
-                }
-                serializer.writeTo(writer, value, valueContext);
-            }
-            if (iterator.hasNext()) {
+        YAMLLiteralBlock block = (YAMLLiteralBlock) object;
+        if (block.getString() != null) {
+            writer.write("| \n");
+            String indentString = context.getIndentString();
+            LineNumberReader reader = new LineNumberReader(new StringReader(block.getString()));
+            String line = reader.readLine();
+            while (line != null) {
+                writer.write(indentString);
+                writer.write(line.trim());
                 writer.write("\n");
+                line = reader.readLine();
             }
         }
     }
