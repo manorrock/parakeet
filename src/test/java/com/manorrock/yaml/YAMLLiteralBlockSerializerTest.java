@@ -29,26 +29,36 @@
  */
 package com.manorrock.yaml;
 
-import java.io.IOException;
-import java.io.LineNumberReader;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.AfterAll;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
 
 /**
- * The YAML Boolean deserializer.
  *
- * @author Manfred Riem (mriem@manorrock.com)
+ * @author manfred
  */
-public class YAMLBooleanDeserializer implements YAMLDeserializer {
-
-    @Override
-    public Object readFrom(LineNumberReader reader, YAMLDeserializerContext context) throws IOException {
-        Boolean booleanValue = null;
-        String line = context.getBacktrackLine();
-        if (line == null) {
-            line = reader.readLine();
-        }
-        if (line != null) {
-            booleanValue = Boolean.parseBoolean(line.trim());
-        }
-        return booleanValue;
+public class YAMLLiteralBlockSerializerTest {
+    
+    public YAMLLiteralBlockSerializerTest() {
     }
+    
+    @BeforeAll
+    public static void setUpClass() {
+    }
+    
+    @AfterAll
+    public static void tearDownClass() {
+    }
+    
+    @BeforeEach
+    public void setUp() {
+    }
+    
+    @AfterEach
+    public void tearDown() {
+    }
+    
 }
