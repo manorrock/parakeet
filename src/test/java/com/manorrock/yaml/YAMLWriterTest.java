@@ -215,4 +215,19 @@ public class YAMLWriterTest {
                 "pojo: \n  list: \n    - 'a'\npojo2: \n  list: \n    - 'a'",
                 stringWriter.toString());
     }
+    
+    /**
+     * Test writeObject method with a YAMLLiteralBlock.
+     * 
+     * @throws Exception when a serious error occurs.
+     */
+    @Test
+    public void testWriteObjectUsingYAMLLiteralBlock() throws Exception {
+        YAMLLiteralBlock block = new YAMLLiteralBlock();
+        block.setString("This\nis\nliterally\nwritten\nout");
+        StringWriter stringWriter = new StringWriter();
+        YAMLWriter writer = new YAMLWriter(stringWriter);
+        writer.writeObject(block);
+        assertEquals("|\nThis\nis\nliterally\nwritten\nout\n", stringWriter.toString());
+    }
 }

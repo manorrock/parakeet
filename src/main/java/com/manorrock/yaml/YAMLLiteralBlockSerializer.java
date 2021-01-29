@@ -47,7 +47,7 @@ public class YAMLLiteralBlockSerializer implements YAMLScalarSerializer {
 
         YAMLLiteralBlock block = (YAMLLiteralBlock) object;
         if (block.getString() != null) {
-            writer.write("| \n");
+            writer.write("|\n");
             String indentString = context.getIndentString();
             LineNumberReader reader = new LineNumberReader(new StringReader(block.getString()));
             String line = reader.readLine();
