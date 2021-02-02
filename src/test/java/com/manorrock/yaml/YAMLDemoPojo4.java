@@ -30,55 +30,33 @@
 package com.manorrock.yaml;
 
 /**
- * The YAML Demo Pojo #3
+ * The YAML Demo Pojo #4
  * 
  * @author Manfred Riem (mriem@manorrock.com)
  */
-public class YAMLDemoPojo3 {
+public class YAMLDemoPojo4 {
     
     /**
-     * Stores the pojo.
+     * Stores the name.
      */
-    private YAMLDemoPojo1 pojo;
+    @YAMLSerializerHint(name = "myName")
+    private String name;
     
     /**
-     * Stores the pojo.
-     */
-    private YAMLDemoPojo1 pojo2;
-    
-    /**
-     * Get the pojo.
+     * Get the name.
      * 
-     * @return the pojo.
+     * @return the name.
      */
-    public YAMLDemoPojo1 getPojo() {
-        return pojo;
+    public String getName() {
+        return name;
     }
     
     /**
-     * Get the pojo #2.
+     * Set the name.
      * 
-     * @return the pojo #2.
+     * @param name the name.
      */
-    public YAMLDemoPojo1 getPojo2() {
-        return pojo;
-    }
-    
-    /**
-     * Set the pojo.
-     * 
-     * @param pojo the pojo.
-     */
-    public void setPojo(YAMLDemoPojo1 pojo) {
-        this.pojo = pojo;
-    }
-    
-    /**
-     * Set the pojo #2.
-     * 
-     * @param pojo2 the pojo #2.
-     */
-    public void setPojo2(YAMLDemoPojo1 pojo2) {
-        this.pojo2 = pojo2;
+    public void setName(String name) {
+        this.name = name;
     }
 }

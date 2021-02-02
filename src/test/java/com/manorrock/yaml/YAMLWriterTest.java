@@ -230,4 +230,19 @@ public class YAMLWriterTest {
         writer.writeObject(block);
         assertEquals("|\nThis\nis\nliterally\nwritten\nout\n", stringWriter.toString());
     }
+    
+    /**
+     * Test writeObject method with a YAMLSerializerHint
+     * 
+     * @throws Exception when a serious error occurs.
+     */
+    @Test
+    public void testWriteObjectWithYAMLSeriaizerHint() throws Exception {
+        YAMLDemoPojo4 pojo = new YAMLDemoPojo4();
+        pojo.setName("this_is_the_name");
+        StringWriter stringWriter = new StringWriter();
+        YAMLWriter writer = new YAMLWriter(stringWriter);
+        writer.writeObject(pojo);
+        assertEquals("myName: 'this_is_the_name'", stringWriter.toString());
+    }
 }
