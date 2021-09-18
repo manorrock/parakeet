@@ -27,16 +27,16 @@
  *  ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
  *  POSSIBILITY OF SUCH DAMAGE.
  */
-package com.manorrock.yaml;
+package com.manorrock.parakeet;
 
 import java.util.Map;
 
 /**
- * The YAML serializer context.
+ * The YAML deserializer context.
  *
  * @author Manfred Riem (mriem@manorrock.com)
  */
-public class YAMLSerializerContext {
+public class YAMLDeserializerContext {
 
     /**
      * Stores the indent.
@@ -44,42 +44,57 @@ public class YAMLSerializerContext {
     private int indent;
 
     /**
-     * Stores the serializers.
+     * Stores the deserializers.
      */
-    private Map<String, YAMLSerializer> serializers;
+    private Map<String, YAMLDeserializer> deserializers;
+
+    /**
+     * Stores the back track line.
+     */
+    private String backtrackLine;
+    
+    /**
+     * Stores the type.
+     */
+    private String type;
 
     /**
      * Constructor.
      */
-    public YAMLSerializerContext() {
+    public YAMLDeserializerContext() {
     }
 
     /**
      * Copy constructor.
-     * 
+     *
      * @param context the context.
      */
-    public YAMLSerializerContext(YAMLSerializerContext context) {
+    public YAMLDeserializerContext(YAMLDeserializerContext context) {
+        this.deserializers = context.deserializers;
         this.indent = context.indent;
-        this.serializers = context.serializers;
     }
 
     /**
-     * Set the indent.
+     * Get the backtrack line.
      *
-     * @param indent the indent.
+     * @return the backtrack line.
      */
-    public void setIndent(int indent) {
-        this.indent = indent;
+    public String getBacktrackLine() {
+        return backtrackLine;
     }
 
     /**
-     * Set the serializers.
+     * Get the deserializer.
      *
-     * @param serializers the serializers.
+     * @param className the name.
+     * @return the deserializer.
      */
-    public void setSerializers(Map<String, YAMLSerializer> serializers) {
-        this.serializers = serializers;
+    public YAMLDeserializer getDeserializer(String className) {
+        YAMLDeserializer serializer = deserializers.get(className);
+        if (serializer == null) {
+            serializer = deserializers.get("*");
+        }
+        return serializer;
     }
 
     /**
@@ -98,23 +113,54 @@ public class YAMLSerializerContext {
      */
     public String getIndentString() {
         StringBuilder indentString = new StringBuilder();
-        for(int i=0; i<indent; i++) {
+        for (int i = 0; i < indent; i++) {
             indentString.append(" ");
         }
         return indentString.toString();
     }
+    
+    /**
+     * Get the type.
+     * 
+     * @return the type.
+     */
+    public String getType() {
+        return type;
+    }
 
     /**
-     * Get the serializer.
+     * Set the backtrack line.
      *
-     * @param className the name.
-     * @return the serializer.
+     * @param backtrackLine the backtrack line.
      */
-    public YAMLSerializer getSerializer(String className) {
-        YAMLSerializer serializer = serializers.get(className);
-        if (serializer == null) {
-            serializer = serializers.get("*");
-        }
-        return serializer;
+    public void setBacktrackLine(String backtrackLine) {
+        this.backtrackLine = backtrackLine;
+    }
+
+    /**
+     * Set the deserializers.
+     *
+     * @param deserializers the deserializers.
+     */
+    public void setDeserializers(Map<String, YAMLDeserializer> deserializers) {
+        this.deserializers = deserializers;
+    }
+
+    /**
+     * Set the indent.
+     *
+     * @param indent the indent.
+     */
+    public void setIndent(int indent) {
+        this.indent = indent;
+    }
+    
+    /**
+     * Set the type.
+     * 
+     * @param type the type.
+     */
+    public void setType(String type) {
+        this.type = type;
     }
 }

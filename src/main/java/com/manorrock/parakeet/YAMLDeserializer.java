@@ -27,37 +27,26 @@
  *  ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
  *  POSSIBILITY OF SUCH DAMAGE.
  */
-package com.manorrock.yaml;
+package com.manorrock.parakeet;
 
 import java.io.IOException;
 import java.io.LineNumberReader;
-import java.lang.reflect.InvocationTargetException;
-import java.util.ArrayList;
-import java.util.Collection;
 
 /**
- * The YAML Collection Deserializer.
- *
+ * A YAML deserializer.
+ * 
  * @author Manfred Riem (mriem@manorrock.com)
  */
-public class YAMLCollectionDeserializer implements YAMLDeserializer {
+public interface YAMLDeserializer {
 
-    @Override
-    public Object readFrom(LineNumberReader reader, YAMLDeserializerContext context) throws IOException {
-        Collection collection;
-        if (context.getType() != null) {
-            try {
-                Class clazz = Class.forName(context.getType());
-                collection = (Collection) clazz.getDeclaredConstructor().newInstance();
-            } catch(ClassNotFoundException | NoSuchMethodException |
-                    InstantiationException | IllegalAccessException |
-                    InvocationTargetException e) {
-                throw new IOException("An error occurred reading around line " 
-                        + reader.getLineNumber(), e);
-            }
-        } else {
-            collection = new ArrayList();
-        }
-        return collection;
-    }
+    /**
+     * Read the object from the reader.
+     * 
+     * @param reader the reader.
+     * @param context the deserialization context.
+     * @return the object.
+     * @throws IOException when I/O error occurs.
+     */
+    public Object readFrom(LineNumberReader reader, 
+            YAMLDeserializerContext context) throws IOException;
 }

@@ -27,21 +27,28 @@
  *  ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
  *  POSSIBILITY OF SUCH DAMAGE.
  */
-package com.manorrock.yaml;
+package com.manorrock.parakeet;
 
 import java.io.IOException;
 import java.io.LineNumberReader;
 
 /**
- * The YAML deserializer that uses reflection to read the given object.
+ * The YAML Boolean deserializer.
  *
  * @author Manfred Riem (mriem@manorrock.com)
  */
-public class YAMLReflectionDeserializer implements YAMLDeserializer {
+public class YAMLBooleanDeserializer implements YAMLDeserializer {
 
     @Override
     public Object readFrom(LineNumberReader reader, YAMLDeserializerContext context) throws IOException {
-        Object object = null;
-        return object;
+        Boolean booleanValue = null;
+        String line = context.getBacktrackLine();
+        if (line == null) {
+            line = reader.readLine();
+        }
+        if (line != null) {
+            booleanValue = Boolean.parseBoolean(line.trim());
+        }
+        return booleanValue;
     }
 }

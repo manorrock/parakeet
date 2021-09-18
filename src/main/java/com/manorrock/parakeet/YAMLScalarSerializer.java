@@ -27,36 +27,12 @@
  *  ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
  *  POSSIBILITY OF SUCH DAMAGE.
  */
-package com.manorrock.yaml;
-
-import java.io.IOException;
-import java.io.LineNumberReader;
-import java.io.StringReader;
-import java.io.Writer;
+package com.manorrock.parakeet;
 
 /**
- * The YAML literal block serializer.
- *
+ * A YAML scalar serializer.
+ * 
  * @author Manfred Riem (mriem@manorrock.com)
  */
-public class YAMLLiteralBlockSerializer implements YAMLScalarSerializer {
-
-    @Override
-    public void writeTo(Writer writer, Object object,
-            YAMLSerializerContext context) throws IOException {
-
-        YAMLLiteralBlock block = (YAMLLiteralBlock) object;
-        if (block.getString() != null) {
-            writer.write("|\n");
-            String indentString = context.getIndentString();
-            LineNumberReader reader = new LineNumberReader(new StringReader(block.getString()));
-            String line = reader.readLine();
-            while (line != null) {
-                writer.write(indentString);
-                writer.write(line.trim());
-                writer.write("\n");
-                line = reader.readLine();
-            }
-        }
-    }
+public interface YAMLScalarSerializer extends YAMLSerializer {
 }

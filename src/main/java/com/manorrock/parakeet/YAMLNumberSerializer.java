@@ -27,12 +27,23 @@
  *  ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
  *  POSSIBILITY OF SUCH DAMAGE.
  */
-package com.manorrock.yaml;
+package com.manorrock.parakeet;
+
+import java.io.IOException;
+import java.io.Writer;
 
 /**
- * A YAML scalar serializer.
- * 
+ * The YAML number serializer.
+ *
  * @author Manfred Riem (mriem@manorrock.com)
  */
-public interface YAMLScalarSerializer extends YAMLSerializer {
+public class YAMLNumberSerializer implements YAMLScalarSerializer {
+
+    @Override
+    public void writeTo(Writer writer, Object object,
+            YAMLSerializerContext context) throws IOException {
+
+        Number number = (Number) object;
+        writer.write(number.toString());
+    }
 }

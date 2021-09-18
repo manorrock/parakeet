@@ -27,24 +27,19 @@
  *  ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
  *  POSSIBILITY OF SUCH DAMAGE.
  */
-package com.manorrock.yaml;
+package com.manorrock.parakeet;
 
 /**
- * The YAML Demo Pojo #3
+ * The YAML Demo Pojo #2
  * 
  * @author Manfred Riem (mriem@manorrock.com)
  */
-public class YAMLDemoPojo3 {
+public class YAMLDemoPojo2 {
     
     /**
      * Stores the pojo.
      */
     private YAMLDemoPojo1 pojo;
-    
-    /**
-     * Stores the pojo.
-     */
-    private YAMLDemoPojo1 pojo2;
     
     /**
      * Get the pojo.
@@ -56,29 +51,11 @@ public class YAMLDemoPojo3 {
     }
     
     /**
-     * Get the pojo #2.
-     * 
-     * @return the pojo #2.
-     */
-    public YAMLDemoPojo1 getPojo2() {
-        return pojo;
-    }
-    
-    /**
      * Set the pojo.
      * 
      * @param pojo the pojo.
      */
     public void setPojo(YAMLDemoPojo1 pojo) {
         this.pojo = pojo;
-    }
-    
-    /**
-     * Set the pojo #2.
-     * 
-     * @param pojo2 the pojo #2.
-     */
-    public void setPojo2(YAMLDemoPojo1 pojo2) {
-        this.pojo2 = pojo2;
     }
 }

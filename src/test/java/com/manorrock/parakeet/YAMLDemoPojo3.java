@@ -27,28 +27,58 @@
  *  ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
  *  POSSIBILITY OF SUCH DAMAGE.
  */
-package com.manorrock.yaml;
-
-import java.io.IOException;
-import java.io.LineNumberReader;
+package com.manorrock.parakeet;
 
 /**
- * The YAML Boolean deserializer.
- *
+ * The YAML Demo Pojo #3
+ * 
  * @author Manfred Riem (mriem@manorrock.com)
  */
-public class YAMLBooleanDeserializer implements YAMLDeserializer {
-
-    @Override
-    public Object readFrom(LineNumberReader reader, YAMLDeserializerContext context) throws IOException {
-        Boolean booleanValue = null;
-        String line = context.getBacktrackLine();
-        if (line == null) {
-            line = reader.readLine();
-        }
-        if (line != null) {
-            booleanValue = Boolean.parseBoolean(line.trim());
-        }
-        return booleanValue;
+public class YAMLDemoPojo3 {
+    
+    /**
+     * Stores the pojo.
+     */
+    private YAMLDemoPojo1 pojo;
+    
+    /**
+     * Stores the pojo.
+     */
+    private YAMLDemoPojo1 pojo2;
+    
+    /**
+     * Get the pojo.
+     * 
+     * @return the pojo.
+     */
+    public YAMLDemoPojo1 getPojo() {
+        return pojo;
+    }
+    
+    /**
+     * Get the pojo #2.
+     * 
+     * @return the pojo #2.
+     */
+    public YAMLDemoPojo1 getPojo2() {
+        return pojo;
+    }
+    
+    /**
+     * Set the pojo.
+     * 
+     * @param pojo the pojo.
+     */
+    public void setPojo(YAMLDemoPojo1 pojo) {
+        this.pojo = pojo;
+    }
+    
+    /**
+     * Set the pojo #2.
+     * 
+     * @param pojo2 the pojo #2.
+     */
+    public void setPojo2(YAMLDemoPojo1 pojo2) {
+        this.pojo2 = pojo2;
     }
 }

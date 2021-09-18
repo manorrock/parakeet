@@ -27,35 +27,23 @@
  *  ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
  *  POSSIBILITY OF SUCH DAMAGE.
  */
-package com.manorrock.yaml;
+package com.manorrock.parakeet;
+
+import java.lang.annotation.Retention;
+import static java.lang.annotation.RetentionPolicy.RUNTIME;
 
 /**
- * The YAML Demo Pojo #2
+ * The YAML serializer hint annotation.
  * 
- * @author Manfred Riem (mriem@manorrock.com)
+* @author Manfred Riem (mriem@manorrock.com)
  */
-public class YAMLDemoPojo2 {
+@Retention(RUNTIME)
+public @interface YAMLSerializerHint {
     
     /**
-     * Stores the pojo.
-     */
-    private YAMLDemoPojo1 pojo;
-    
-    /**
-     * Get the pojo.
+     * Overrides the name.
      * 
-     * @return the pojo.
+     * @return the name.
      */
-    public YAMLDemoPojo1 getPojo() {
-        return pojo;
-    }
-    
-    /**
-     * Set the pojo.
-     * 
-     * @param pojo the pojo.
-     */
-    public void setPojo(YAMLDemoPojo1 pojo) {
-        this.pojo = pojo;
-    }
+    String name() default "";
 }

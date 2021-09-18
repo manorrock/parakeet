@@ -28,6 +28,9 @@
  *  POSSIBILITY OF SUCH DAMAGE.
  */
 
-module com.manorrock.yaml {
-    exports com.manorrock.yaml;
+/**
+ * The Manorrock Parakeet module.
+ */
+module com.manorrock.parakeet {
+    exports com.manorrock.parakeet;
 }

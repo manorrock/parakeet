@@ -27,26 +27,46 @@
  *  ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
  *  POSSIBILITY OF SUCH DAMAGE.
  */
-package com.manorrock.yaml;
+package com.manorrock.parakeet;
 
 import java.io.IOException;
 import java.io.Writer;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Map.Entry;
 
 /**
- * A YAML serializer.
+ * The YAML Map Serializer.
  *
  * @author Manfred Riem (mriem@manorrock.com)
  */
-public interface YAMLSerializer {
+public class YAMLMapSerializer implements YAMLSerializer {
 
-    /**
-     * Write the object to the writer using the indent.
-     *
-     * @param writer the writer to use.
-     * @param object the object to write.
-     * @param context the serialization context.
-     * @throws IOException when an error occurs.
-     */
-    void writeTo(Writer writer, Object object, YAMLSerializerContext context)
-            throws IOException;
+    @Override
+    public void writeTo(Writer writer, Object object,
+            YAMLSerializerContext context) throws IOException {
+
+        Map<String, Object> map = (Map<String, Object>) object;
+        YAMLSerializerContext valueContext = new YAMLSerializerContext(context);
+        valueContext.setIndent(context.getIndent() + 2);
+        Iterator<Entry<String, Object>> iterator = map.entrySet().iterator();
+        while (iterator.hasNext()) {
+            Entry<String, Object> entry = iterator.next();
+            String key = entry.getKey();
+            Object value = entry.getValue();
+            writer.write(context.getIndentString());
+            writer.write(key);
+            writer.write(": ");
+            if (value != null) {
+                YAMLSerializer serializer = context.getSerializer(value.getClass().getName());
+                if (!(serializer instanceof YAMLScalarSerializer)) {
+                    writer.write("\n");
+                }
+                serializer.writeTo(writer, value, valueContext);
+            }
+            if (iterator.hasNext()) {
+                writer.write("\n");
+            }
+        }
+    }
 }

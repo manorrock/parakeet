@@ -27,47 +27,30 @@
  *  ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
  *  POSSIBILITY OF SUCH DAMAGE.
  */
-package com.manorrock.yaml;
+package com.manorrock.parakeet;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.io.IOException;
+import java.io.LineNumberReader;
 
 /**
- * The YAML Demo Pojo #1
- * 
+ * The YAML Number deserializer.
+ *
  * @author Manfred Riem (mriem@manorrock.com)
  */
-public class YAMLDemoPojo1 {
-    
-    /**
-     * Stores the list.
-     */
-    @YAMLDeserializerHint(elementType = String.class)
-    private ArrayList<String> list;
+public class YAMLNumberDeserializer implements YAMLDeserializer {
 
-    /**
-     * Constructor.
-     */
-    public YAMLDemoPojo1() {
-        list = new ArrayList();
-        list.add("a");
-    }
-    
-    /**
-     * Get the list.
-     * 
-     * @return the list.
-     */
-    public List<String> getList() {
-        return list;
-    }
-    
-    /**
-     * Set the list.
-     * 
-     * @param list the list.
-     */
-    public void setList(ArrayList<String> list) {
-        this.list = list;
+    @Override
+    public Object readFrom(LineNumberReader reader, YAMLDeserializerContext context) throws IOException {
+        Object result;
+        String line = context.getBacktrackLine();
+        if (line == null) {
+            line = reader.readLine();
+        }
+        if (line != null && line.contains(".")) {
+            result = Double.parseDouble(line.trim());
+        } else {
+            result = Long.parseLong(line.trim());
+        }
+        return result;
     }
 }

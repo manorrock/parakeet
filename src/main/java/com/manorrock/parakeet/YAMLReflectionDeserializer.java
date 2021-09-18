@@ -27,23 +27,21 @@
  *  ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
  *  POSSIBILITY OF SUCH DAMAGE.
  */
-package com.manorrock.yaml;
+package com.manorrock.parakeet;
 
-import java.lang.annotation.Retention;
-import static java.lang.annotation.RetentionPolicy.RUNTIME;
+import java.io.IOException;
+import java.io.LineNumberReader;
 
 /**
- * The YAML serializer hint annotation.
- * 
-* @author Manfred Riem (mriem@manorrock.com)
+ * The YAML deserializer that uses reflection to read the given object.
+ *
+ * @author Manfred Riem (mriem@manorrock.com)
  */
-@Retention(RUNTIME)
-public @interface YAMLSerializerHint {
-    
-    /**
-     * Overrides the name.
-     * 
-     * @return the name.
-     */
-    String name() default "";
+public class YAMLReflectionDeserializer implements YAMLDeserializer {
+
+    @Override
+    public Object readFrom(LineNumberReader reader, YAMLDeserializerContext context) throws IOException {
+        Object object = null;
+        return object;
+    }
 }

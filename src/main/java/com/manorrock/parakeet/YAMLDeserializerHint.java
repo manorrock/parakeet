@@ -27,23 +27,44 @@
  *  ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
  *  POSSIBILITY OF SUCH DAMAGE.
  */
-package com.manorrock.yaml;
+package com.manorrock.parakeet;
 
-import java.io.IOException;
-import java.io.Writer;
+import java.lang.annotation.Retention;
+import static java.lang.annotation.RetentionPolicy.RUNTIME;
 
 /**
- * The YAML boolean serializer.
- *
- * @author Manfred Riem (mriem@manorrock.com)
+ * The YAML deserializer type annotation.
+ * 
+* @author Manfred Riem (mriem@manorrock.com)
  */
-public class YAMLBooleanSerializer implements YAMLScalarSerializer {
+@Retention(RUNTIME)
+public @interface YAMLDeserializerHint {
+    
+    /**
+     * Overrides the type to use for the given field.
+     * 
+     * @return the type.
+     */
+    Class type() default Object.class;
+    
+    /**
+     * Overrides the element type to use for the element in a collection. 
+     * 
+     * @return the generic type.
+     */
+    Class elementType() default Object.class;
 
-    @Override
-    public void writeTo(Writer writer, Object object,
-            YAMLSerializerContext context) throws IOException {
+    /**
+     * Overrides the key type to use for the key in a map. 
+     * 
+     * @return the generic type.
+     */
+    Class keyType() default Object.class;
 
-        Boolean booleanValue = (Boolean) object;
-        writer.write(booleanValue.toString().toLowerCase());
-    }
+    /**
+     * Overrides the value type to use for the value in map. 
+     * 
+     * @return the generic type.
+     */
+    Class valueType() default Object.class;
 }

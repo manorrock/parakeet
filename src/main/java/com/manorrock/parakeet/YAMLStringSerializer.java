@@ -27,36 +27,25 @@
  *  ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
  *  POSSIBILITY OF SUCH DAMAGE.
  */
-package com.manorrock.yaml;
+package com.manorrock.parakeet;
+
+import java.io.IOException;
+import java.io.Writer;
 
 /**
- * The YAML Demo Pojo #4
- * 
+ * The YAML string serializer.
+ *
  * @author Manfred Riem (mriem@manorrock.com)
  */
-public class YAMLDemoPojo4 {
-    
-    /**
-     * Stores the name.
-     */
-    @YAMLSerializerHint(name = "myName")
-    private String name;
-    
-    /**
-     * Get the name.
-     * 
-     * @return the name.
-     */
-    public String getName() {
-        return name;
-    }
-    
-    /**
-     * Set the name.
-     * 
-     * @param name the name.
-     */
-    public void setName(String name) {
-        this.name = name;
+public class YAMLStringSerializer implements YAMLScalarSerializer {
+
+    @Override
+    public void writeTo(Writer writer, Object object,
+            YAMLSerializerContext context) throws IOException {
+
+        String string = (String) object;
+        writer.write("'");
+        writer.write(string);
+        writer.write("'");
     }
 }

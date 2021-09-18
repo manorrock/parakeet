@@ -27,41 +27,35 @@
  *  ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
  *  POSSIBILITY OF SUCH DAMAGE.
  */
-package com.manorrock.yaml;
-
-import java.io.IOException;
-import java.io.StringWriter;
-import java.io.Writer;
-import java.util.Collection;
-import java.util.Iterator;
+package com.manorrock.parakeet;
 
 /**
- * The YAML Collection Serializer.
- *
+ * The YAML Literal.
+ * 
  * @author Manfred Riem (mriem@manorrock.com)
  */
-public class YAMLCollectionSerializer implements YAMLSerializer {
+public class YAMLLiteralBlock {
+    
+    /**
+     * Stores the string.
+     */
+    private String string;
+    
+    /**
+     * Get the string.
+     * 
+     * @return the string.
+     */
+    public String getString() {
+        return string;
+    }
 
-    @Override
-    public void writeTo(Writer writer, Object object,
-            YAMLSerializerContext context) throws IOException {
-
-        Collection collection = (Collection) object;
-        Iterator iterator = collection.iterator();
-        while (iterator.hasNext()) {
-            Object element = iterator.next();
-            writer.write(context.getIndentString());
-            writer.write("- ");
-            StringWriter stringWriter = new StringWriter();
-            YAMLWriter elementWriter = new YAMLWriter(stringWriter);
-            YAMLSerializer serializer = context.getSerializer(element.getClass().getName());
-            YAMLSerializerContext elementContext = new YAMLSerializerContext(context);
-            elementContext.setIndent(context.getIndent() + 2);
-            serializer.writeTo(elementWriter, element, elementContext);
-            writer.write(stringWriter.toString().trim());
-            if (iterator.hasNext()) {
-                writer.write("\n");
-            }
-        }
+    /**
+     * Set the string.
+     * 
+     * @param string the string.
+     */
+    public void setString(String string) {
+        this.string = string;
     }
 }

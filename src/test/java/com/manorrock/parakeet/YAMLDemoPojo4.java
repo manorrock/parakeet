@@ -27,35 +27,36 @@
  *  ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
  *  POSSIBILITY OF SUCH DAMAGE.
  */
-package com.manorrock.yaml;
+package com.manorrock.parakeet;
 
 /**
- * The YAML Literal.
+ * The YAML Demo Pojo #4
  * 
  * @author Manfred Riem (mriem@manorrock.com)
  */
-public class YAMLLiteralBlock {
+public class YAMLDemoPojo4 {
     
     /**
-     * Stores the string.
+     * Stores the name.
      */
-    private String string;
+    @YAMLSerializerHint(name = "myName")
+    private String name;
     
     /**
-     * Get the string.
+     * Get the name.
      * 
-     * @return the string.
+     * @return the name.
      */
-    public String getString() {
-        return string;
+    public String getName() {
+        return name;
     }
-
+    
     /**
-     * Set the string.
+     * Set the name.
      * 
-     * @param string the string.
+     * @param name the name.
      */
-    public void setString(String string) {
-        this.string = string;
+    public void setName(String name) {
+        this.name = name;
     }
 }

@@ -27,44 +27,26 @@
  *  ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
  *  POSSIBILITY OF SUCH DAMAGE.
  */
-package com.manorrock.yaml;
+package com.manorrock.parakeet;
 
-import java.lang.annotation.Retention;
-import static java.lang.annotation.RetentionPolicy.RUNTIME;
+import java.io.IOException;
+import java.io.Writer;
 
 /**
- * The YAML deserializer type annotation.
- * 
-* @author Manfred Riem (mriem@manorrock.com)
+ * A YAML serializer.
+ *
+ * @author Manfred Riem (mriem@manorrock.com)
  */
-@Retention(RUNTIME)
-public @interface YAMLDeserializerHint {
-    
-    /**
-     * Overrides the type to use for the given field.
-     * 
-     * @return the type.
-     */
-    Class type() default Object.class;
-    
-    /**
-     * Overrides the element type to use for the element in a collection. 
-     * 
-     * @return the generic type.
-     */
-    Class elementType() default Object.class;
+public interface YAMLSerializer {
 
     /**
-     * Overrides the key type to use for the key in a map. 
-     * 
-     * @return the generic type.
+     * Write the object to the writer using the indent.
+     *
+     * @param writer the writer to use.
+     * @param object the object to write.
+     * @param context the serialization context.
+     * @throws IOException when an error occurs.
      */
-    Class keyType() default Object.class;
-
-    /**
-     * Overrides the value type to use for the value in map. 
-     * 
-     * @return the generic type.
-     */
-    Class valueType() default Object.class;
+    void writeTo(Writer writer, Object object, YAMLSerializerContext context)
+            throws IOException;
 }

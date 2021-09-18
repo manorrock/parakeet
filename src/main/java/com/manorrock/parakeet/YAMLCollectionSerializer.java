@@ -27,25 +27,41 @@
  *  ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
  *  POSSIBILITY OF SUCH DAMAGE.
  */
-package com.manorrock.yaml;
+package com.manorrock.parakeet;
 
 import java.io.IOException;
+import java.io.StringWriter;
 import java.io.Writer;
+import java.util.Collection;
+import java.util.Iterator;
 
 /**
- * The YAML string serializer.
+ * The YAML Collection Serializer.
  *
  * @author Manfred Riem (mriem@manorrock.com)
  */
-public class YAMLStringSerializer implements YAMLScalarSerializer {
+public class YAMLCollectionSerializer implements YAMLSerializer {
 
     @Override
     public void writeTo(Writer writer, Object object,
             YAMLSerializerContext context) throws IOException {
 
-        String string = (String) object;
-        writer.write("'");
-        writer.write(string);
-        writer.write("'");
+        Collection collection = (Collection) object;
+        Iterator iterator = collection.iterator();
+        while (iterator.hasNext()) {
+            Object element = iterator.next();
+            writer.write(context.getIndentString());
+            writer.write("- ");
+            StringWriter stringWriter = new StringWriter();
+            YAMLWriter elementWriter = new YAMLWriter(stringWriter);
+            YAMLSerializer serializer = context.getSerializer(element.getClass().getName());
+            YAMLSerializerContext elementContext = new YAMLSerializerContext(context);
+            elementContext.setIndent(context.getIndent() + 2);
+            serializer.writeTo(elementWriter, element, elementContext);
+            writer.write(stringWriter.toString().trim());
+            if (iterator.hasNext()) {
+                writer.write("\n");
+            }
+        }
     }
 }

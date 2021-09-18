@@ -27,30 +27,23 @@
  *  ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
  *  POSSIBILITY OF SUCH DAMAGE.
  */
-package com.manorrock.yaml;
+package com.manorrock.parakeet;
 
 import java.io.IOException;
-import java.io.LineNumberReader;
+import java.io.Writer;
 
 /**
- * The YAML Number deserializer.
+ * The YAML boolean serializer.
  *
  * @author Manfred Riem (mriem@manorrock.com)
  */
-public class YAMLNumberDeserializer implements YAMLDeserializer {
+public class YAMLBooleanSerializer implements YAMLScalarSerializer {
 
     @Override
-    public Object readFrom(LineNumberReader reader, YAMLDeserializerContext context) throws IOException {
-        Object result;
-        String line = context.getBacktrackLine();
-        if (line == null) {
-            line = reader.readLine();
-        }
-        if (line != null && line.contains(".")) {
-            result = Double.parseDouble(line.trim());
-        } else {
-            result = Long.parseLong(line.trim());
-        }
-        return result;
+    public void writeTo(Writer writer, Object object,
+            YAMLSerializerContext context) throws IOException {
+
+        Boolean booleanValue = (Boolean) object;
+        writer.write(booleanValue.toString().toLowerCase());
     }
 }

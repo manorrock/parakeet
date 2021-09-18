@@ -27,23 +27,37 @@
  *  ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
  *  POSSIBILITY OF SUCH DAMAGE.
  */
-package com.manorrock.yaml;
+package com.manorrock.parakeet;
 
 import java.io.IOException;
-import java.io.Writer;
+import java.io.LineNumberReader;
+import java.lang.reflect.InvocationTargetException;
+import java.util.ArrayList;
+import java.util.Collection;
 
 /**
- * The YAML number serializer.
+ * The YAML Collection Deserializer.
  *
  * @author Manfred Riem (mriem@manorrock.com)
  */
-public class YAMLNumberSerializer implements YAMLScalarSerializer {
+public class YAMLCollectionDeserializer implements YAMLDeserializer {
 
     @Override
-    public void writeTo(Writer writer, Object object,
-            YAMLSerializerContext context) throws IOException {
-
-        Number number = (Number) object;
-        writer.write(number.toString());
+    public Object readFrom(LineNumberReader reader, YAMLDeserializerContext context) throws IOException {
+        Collection collection;
+        if (context.getType() != null) {
+            try {
+                Class clazz = Class.forName(context.getType());
+                collection = (Collection) clazz.getDeclaredConstructor().newInstance();
+            } catch(ClassNotFoundException | NoSuchMethodException |
+                    InstantiationException | IllegalAccessException |
+                    InvocationTargetException e) {
+                throw new IOException("An error occurred reading around line " 
+                        + reader.getLineNumber(), e);
+            }
+        } else {
+            collection = new ArrayList();
+        }
+        return collection;
     }
 }
