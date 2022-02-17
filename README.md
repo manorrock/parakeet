@@ -1,5 +1,3 @@
-_This project is no longer being maintained and unless a maintainer steps up it will be removed Jan 1st, 2023_
-
 # Manorrock Parakeet
 
 Manorrock Parakeet delivers you with a light-weight YAML library that is 100% 
