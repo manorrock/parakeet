@@ -29,14 +29,14 @@ The Maven coordinates are as follows.
 
 ```xml
   <dependency>
-    <groupId>com.manorrock.yaml</groupId>
-    <artifactId>yaml</artifactId>
+    <groupId>com.manorrock.parakeet</groupId>
+    <artifactId>parakeet</artifactId>
     <version>y.m.p</version>
   </dependency>
 ```
 
 <!--
-Please see [Maven central](https://repo1.maven.org/maven2/com/manorrock/yaml)
+Please see [Maven central](https://repo1.maven.org/maven2/com/manorrock/parakeet)
 for the latest version information
   -->
 
