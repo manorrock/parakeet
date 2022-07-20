@@ -1,5 +1,7 @@
 # Manorrock Parakeet
 
+[![build](https://github.com/manorrock/parakeet/actions/workflows/build.yml/badge.svg)](https://github.com/manorrock/parakeet/actions/workflows/build.yml)
+
 Manorrock Parakeet delivers you with a light-weight YAML library that is 100% 
 self-contained. It can be used to read and write YAML.
 
