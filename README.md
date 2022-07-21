@@ -1,6 +1,7 @@
 # Manorrock Parakeet
 
 [![build](https://github.com/manorrock/parakeet/actions/workflows/build.yml/badge.svg)](https://github.com/manorrock/parakeet/actions/workflows/build.yml)
+[![Code Smells](https://sonarcloud.io/api/project_badges/measure?project=manorrock_parakeet&metric=code_smells)](https://sonarcloud.io/summary/new_code?id=manorrock_parakeet)
 
 Manorrock Parakeet delivers you with a light-weight YAML library that is 100% 
 self-contained. It can be used to read and write YAML.
