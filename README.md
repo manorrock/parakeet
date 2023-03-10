@@ -1,7 +1,6 @@
 # Manorrock Parakeet
 
 [![build](https://github.com/manorrock/parakeet/actions/workflows/build.yml/badge.svg)](https://github.com/manorrock/parakeet/actions/workflows/build.yml)
-[![Coverage](https://sonarcloud.io/api/project_badges/measure?project=manorrock_parakeet&metric=coverage)](https://sonarcloud.io/summary/new_code?id=manorrock_parakeet)
 [![Code Smells](https://sonarcloud.io/api/project_badges/measure?project=manorrock_parakeet&metric=code_smells)](https://sonarcloud.io/summary/new_code?id=manorrock_parakeet)
 [![Lines of Code](https://sonarcloud.io/api/project_badges/measure?project=manorrock_parakeet&metric=ncloc)](https://sonarcloud.io/summary/new_code?id=manorrock_parakeet)
 
