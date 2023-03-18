@@ -36,7 +36,7 @@ import java.util.Collection;
 import java.util.Iterator;
 
 /**
- * The YAML Collection Serializer.
+ * The YAML Collection serializer.
  *
  * @author Manfred Riem (mriem@manorrock.com)
  */
@@ -47,7 +47,7 @@ public class YAMLCollectionSerializer implements YAMLSerializer {
             YAMLSerializerContext context) throws IOException {
 
         Collection collection = (Collection) object;
-        Iterator iterator = collection.iterator();
+        Iterator<?> iterator = collection.iterator();
         while (iterator.hasNext()) {
             Object element = iterator.next();
             writer.write(context.getIndentString());

@@ -32,5 +32,7 @@
  * The Manorrock Parakeet module.
  */
 module com.manorrock.parakeet {
+    
     exports com.manorrock.parakeet;
+    opens com.manorrock.parakeet;
 }

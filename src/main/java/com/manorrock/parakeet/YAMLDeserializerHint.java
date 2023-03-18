@@ -45,26 +45,26 @@ public @interface YAMLDeserializerHint {
      * 
      * @return the type.
      */
-    Class type() default Object.class;
+    Class<?> type() default Object.class;
     
     /**
      * Overrides the element type to use for the element in a collection. 
      * 
      * @return the generic type.
      */
-    Class elementType() default Object.class;
+    Class<?> elementType() default Object.class;
 
     /**
      * Overrides the key type to use for the key in a map. 
      * 
      * @return the generic type.
      */
-    Class keyType() default Object.class;
+    Class<?> keyType() default Object.class;
 
     /**
      * Overrides the value type to use for the value in map. 
      * 
      * @return the generic type.
      */
-    Class valueType() default Object.class;
+    Class<?> valueType() default Object.class;
 }
