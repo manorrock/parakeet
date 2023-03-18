@@ -43,7 +43,7 @@ import org.junit.jupiter.api.Test;
  *
  * @author Manfred Riem (mriem@manorrock.com)
  */
-public class YAMLReaderTest {
+class YAMLReaderTest {
 
     /**
      * Test readObject method.
@@ -51,7 +51,7 @@ public class YAMLReaderTest {
      * @throws Exception when a serious error occurs.
      */
     @Test
-    public void testReadObjectUsingAHashMap() throws Exception {
+    void testReadObjectUsingAHashMap() throws Exception {
         YAMLReader reader = new YAMLReader(new StringReader("map:"));
         Map<String, Object> map = (Map<String, Object>) reader.readObject(HashMap.class.getName());
         assertTrue(map.containsKey("map"));
@@ -63,7 +63,7 @@ public class YAMLReaderTest {
      * @throws Exception when a serious error occurs.
      */
     @Test
-    public void testReadObjectUsingAHashMap2() throws Exception {
+    void testReadObjectUsingAHashMap2() throws Exception {
         YAMLReader reader = new YAMLReader(new StringReader("map:\n  map2:"));
         Map<String, Object> map = (Map<String, Object>) reader.readObject(HashMap.class.getName());
         assertTrue(map.containsKey("map"));
@@ -75,7 +75,7 @@ public class YAMLReaderTest {
      * @throws Exception when a serious error occurs.
      */
     @Test
-    public void testReadObjectUsingAHashMap3() throws Exception {
+    void testReadObjectUsingAHashMap3() throws Exception {
         YAMLReader reader = new YAMLReader(new StringReader("map:\nmap2:"));
         Map<String, Object> map = (Map<String, Object>) reader.readObject(HashMap.class.getName());
         assertTrue(map.containsKey("map"));

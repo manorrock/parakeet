@@ -93,7 +93,7 @@ public class YAMLMapDeserializer implements YAMLDeserializer {
                     } else {
                         YAMLDeserializerContext valueContext = new YAMLDeserializerContext(context);
                         valueContext.setIndent(valueContext.getIndent() + 2);
-                        Map valueMap = (Map) readFrom(reader, valueContext);
+                        Map<?, ?> valueMap = (Map) readFrom(reader, valueContext);
                         if (valueMap != null && !valueMap.isEmpty()) {
                             value = valueMap;
                         } else {
