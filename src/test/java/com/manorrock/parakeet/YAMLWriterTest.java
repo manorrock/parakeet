@@ -41,7 +41,7 @@ import org.junit.jupiter.api.Test;
  *
  * @author Manfred Riem (mriem@manorrock.com)
  */
-public class YAMLWriterTest {
+class YAMLWriterTest {
 
     /**
      * Test writeObject method.
@@ -49,7 +49,7 @@ public class YAMLWriterTest {
      * @throws Exception when a serious error occurs.
      */
     @Test
-    public void testWriteObjectUsingAMap() throws Exception {
+    void testWriteObjectUsingAMap() throws Exception {
         HashMap<String, Object> map = new HashMap<>();
         map.put("stringValue", "this is a string");
         StringWriter stringWriter = new StringWriter();
@@ -64,7 +64,7 @@ public class YAMLWriterTest {
      * @throws Exception when a serious error occurs.
      */
     @Test
-    public void testWriteObjectUsingAMap2() throws Exception {
+    void testWriteObjectUsingAMap2() throws Exception {
         HashMap<String, Object> map = new HashMap<>();
         map.put("integerValue", 1);
         StringWriter stringWriter = new StringWriter();
@@ -79,7 +79,7 @@ public class YAMLWriterTest {
      * @throws Exception when a serious error occurs.
      */
     @Test
-    public void testWriteObjectUsingAMap3() throws Exception {
+    void testWriteObjectUsingAMap3() throws Exception {
         HashMap<String, Object> map = new HashMap<>();
         map.put("booleanValue", true);
         StringWriter stringWriter = new StringWriter();
