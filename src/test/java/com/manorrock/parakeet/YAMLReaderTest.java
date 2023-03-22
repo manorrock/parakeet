@@ -88,7 +88,7 @@ class YAMLReaderTest {
      * @throws Exception when a serious error occurs.
      */
     @Test
-    public void testReadObjectUsingAMapWithString() throws Exception {
+    void testReadObjectUsingAMapWithString() throws Exception {
         YAMLReader reader = new YAMLReader(new StringReader("map: 'a string' "));
         Map<String, Object> map = (Map<String, Object>) reader.readObject(HashMap.class.getName());
         assertTrue(map.containsKey("map"));
@@ -101,7 +101,7 @@ class YAMLReaderTest {
      * @throws Exception when a serious error occurs.
      */
     @Test
-    public void testReadObjectUsingAString() throws Exception {
+    void testReadObjectUsingAString() throws Exception {
         YAMLReader reader = new YAMLReader(new StringReader("  'a string'  "));
         String string = (String) reader.readObject(String.class.getName());
         assertEquals("a string", string);
@@ -113,7 +113,7 @@ class YAMLReaderTest {
      * @throws Exception when a serious error occurs.
      */
     @Test
-    public void testReadObjectUsingABoolean() throws Exception {
+    void testReadObjectUsingABoolean() throws Exception {
         YAMLReader reader = new YAMLReader(new StringReader("true"));
         Boolean booleanValue = (Boolean) reader.readObject(Boolean.class.getName());
         assertTrue(booleanValue);
@@ -125,7 +125,7 @@ class YAMLReaderTest {
      * @throws Exception when a serious error occurs.
      */
     @Test
-    public void testReadObjectUsingAMapWithAnInteger() throws Exception {
+    void testReadObjectUsingAMapWithAnInteger() throws Exception {
         YAMLReader reader = new YAMLReader(new StringReader("map: 12345"));
         Map<String, Object> map = (Map<String, Object>) reader.readObject(HashMap.class.getName());
         assertTrue(map.containsKey("map"));
@@ -138,22 +138,20 @@ class YAMLReaderTest {
      * @throws Exception when a serious error occurs.
      */
     @Test
-    public void testReadObjectUsingAMapWithAFloat() throws Exception {
+    void testReadObjectUsingAMapWithAFloat() throws Exception {
         YAMLReader reader = new YAMLReader(new StringReader("map: 12.345"));
         Map<String, Object> map = (Map<String, Object>) reader.readObject(HashMap.class.getName());
         assertTrue(map.containsKey("map"));
         assertEquals(12.345d, map.get("map"));
     }
     
-    
-
     /**
      * Test readObject method.
      *
      * @throws Exception when a serious error occurs.
      */
     @Test
-    public void testReadObjectUsingAList() throws Exception {
+    void testReadObjectUsingAList() throws Exception {
         YAMLReader reader = new YAMLReader(new StringReader(""));
         Collection collection = (Collection) reader.readObject(ArrayList.class.getName());
         assertTrue(collection instanceof ArrayList);
