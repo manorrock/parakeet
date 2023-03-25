@@ -94,7 +94,7 @@ class YAMLWriterTest {
      * @throws Exception when a serious error occurs.
      */
     @Test
-    public void testWriteObjectUsingAMap4() throws Exception {
+    void testWriteObjectUsingAMap4() throws Exception {
         HashMap<String, Object> map = new HashMap<>();
         ArrayList<String> list = new ArrayList<>();
         list.add("a");
@@ -111,7 +111,7 @@ class YAMLWriterTest {
      * @throws Exception when a serious error occurs.
      */
     @Test
-    public void testWriteObjectUsingAMap5() throws Exception {
+    void testWriteObjectUsingAMap5() throws Exception {
         LinkedHashMap<String, Object> map = new LinkedHashMap<>();
         map.put("value1", true);
         map.put("value2", false);
@@ -127,7 +127,7 @@ class YAMLWriterTest {
      * @throws Exception when a serious error occurs.
      */
     @Test
-    public void testWriteObjectUsingAList() throws Exception {
+    void testWriteObjectUsingAList() throws Exception {
         ArrayList<String> list = new ArrayList<>();
         list.add("a");
         StringWriter stringWriter = new StringWriter();
@@ -142,7 +142,7 @@ class YAMLWriterTest {
      * @throws Exception when a serious error occurs.
      */
     @Test
-    public void testWriteObjectUsingAList2() throws Exception {
+    void testWriteObjectUsingAList2() throws Exception {
         ArrayList<String> list = new ArrayList<>();
         list.add("a");
         list.add("b");
@@ -158,7 +158,7 @@ class YAMLWriterTest {
      * @throws Exception when a serious error occurs.
      */
     @Test
-    public void testWriteObjectUsingAPojo() throws Exception {
+    void testWriteObjectUsingAPojo() throws Exception {
         YAMLDemoPojo1 pojo = new YAMLDemoPojo1();
         StringWriter stringWriter = new StringWriter();
         YAMLWriter writer = new YAMLWriter(stringWriter);
@@ -172,7 +172,7 @@ class YAMLWriterTest {
      * @throws Exception when a serious error occurs.
      */
     @Test
-    public void testWriteObjectUsingAPojo2() throws Exception {
+    void testWriteObjectUsingAPojo2() throws Exception {
         YAMLDemoPojo2 pojo = new YAMLDemoPojo2();
         StringWriter stringWriter = new StringWriter();
         YAMLWriter writer = new YAMLWriter(stringWriter);
@@ -186,7 +186,7 @@ class YAMLWriterTest {
      * @throws Exception when a serious error occurs.
      */
     @Test
-    public void testWriteObjectUsingAPojo3() throws Exception {
+    void testWriteObjectUsingAPojo3() throws Exception {
         YAMLDemoPojo2 pojo = new YAMLDemoPojo2();
         YAMLDemoPojo1 childPojo = new YAMLDemoPojo1();
         pojo.setPojo(childPojo);
@@ -202,7 +202,7 @@ class YAMLWriterTest {
      * @throws Exception when a serious error occurs.
      */
     @Test
-    public void testWriteObjectUsingAPojo4() throws Exception {
+    void testWriteObjectUsingAPojo4() throws Exception {
         YAMLDemoPojo3 pojo = new YAMLDemoPojo3();
         YAMLDemoPojo1 childPojo = new YAMLDemoPojo1();
         pojo.setPojo(childPojo);
@@ -222,7 +222,7 @@ class YAMLWriterTest {
      * @throws Exception when a serious error occurs.
      */
     @Test
-    public void testWriteObjectUsingYAMLLiteralBlock() throws Exception {
+    void testWriteObjectUsingYAMLLiteralBlock() throws Exception {
         YAMLLiteralBlock block = new YAMLLiteralBlock();
         block.setString("This\nis\nliterally\nwritten\nout");
         StringWriter stringWriter = new StringWriter();
@@ -237,7 +237,7 @@ class YAMLWriterTest {
      * @throws Exception when a serious error occurs.
      */
     @Test
-    public void testWriteObjectWithYAMLSeriaizerHint() throws Exception {
+    void testWriteObjectWithYAMLSeriaizerHint() throws Exception {
         YAMLDemoPojo4 pojo = new YAMLDemoPojo4();
         pojo.setName("this_is_the_name");
         StringWriter stringWriter = new StringWriter();
