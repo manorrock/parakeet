@@ -41,7 +41,6 @@ public class YAMLReflectionDeserializer implements YAMLDeserializer {
 
     @Override
     public Object readFrom(LineNumberReader reader, YAMLDeserializerContext context) throws IOException {
-        Object object = null;
-        return object;
+        return null;
     }
 }
