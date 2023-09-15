@@ -75,10 +75,9 @@ public class YAMLMapDeserializer implements YAMLDeserializer {
                 if (key != null) {
                     String valueString = matcher.group(2);
                     Object value = null;
-                    if (valueString.trim().startsWith(">")) {
-                        // parse the multi-line '>' style.
-                    } else if (valueString.trim().startsWith("|")) {
-                        // parse the multi-line '|' style.
+                    if (valueString.trim().startsWith(">") ||
+                        valueString.trim().startsWith("|")) {
+                        // parse the multi-line '>' style or '|' style.
                     } else if (!valueString.trim().equals("") && valueString.trim().startsWith("'")) {
                         YAMLDeserializer deserializer = context.getDeserializer(String.class.getName());
                         YAMLDeserializerContext valueContext = new YAMLDeserializerContext(context);
