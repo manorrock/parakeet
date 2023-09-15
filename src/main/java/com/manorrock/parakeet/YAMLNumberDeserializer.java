@@ -41,15 +41,15 @@ public class YAMLNumberDeserializer implements YAMLDeserializer {
 
     @Override
     public Object readFrom(LineNumberReader reader, YAMLDeserializerContext context) throws IOException {
-        Object result;
+        Object result = null;
         String line = context.getBacktrackLine();
         if (line == null) {
             line = reader.readLine();
         }
         if (line != null && line.contains(".")) {
-            result = Double.parseDouble(line.trim());
-        } else {
-            result = Long.parseLong(line.trim());
+            result = Double.valueOf(line.trim());
+        } else if (line != null) {
+            result = Long.valueOf(line.trim());
         }
         return result;
     }
