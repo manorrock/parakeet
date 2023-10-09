@@ -17,6 +17,11 @@
             <url>https://github.com/manorrock/parakeet/blob/master/LICENSE</url>
         </license>
     </licenses>
+    <properties>
+        <!-- other -->
+        <java.version>21</java.version>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    </properties>
     <build>
         <plugins>
             <plugin>
@@ -24,7 +29,7 @@
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>3.10.0</version>
                 <configuration>
-                    <release>17</release>
+                    <release>${java.version}</release>
                 </configuration>
             </plugin>
             <plugin>
@@ -154,9 +159,6 @@
             </build>
         </profile>
     </profiles>
-    <properties>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    </properties>
     <scm>
         <connection>scm:git:git://github.com/manorrock/parakeet.git</connection>
         <developerConnection>scm:git:git@github.com:manorrock/parakeet.git</developerConnection>
