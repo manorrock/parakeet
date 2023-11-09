@@ -4,7 +4,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.manorrock.parakeet</groupId>
     <artifactId>parakeet</artifactId>
-    <version>20.11.2-SNAPSHOT</version>
+    <version>23.11.0</version>
     <packaging>jar</packaging>
     <name>Manorrock Parakeet</name>
     <description>
