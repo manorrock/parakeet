@@ -5,6 +5,10 @@
 Manorrock Parakeet delivers you with a light-weight YAML library that is 100% 
 self-contained. It can be used to read and write YAML.
 
+## Prerequisites
+
+1. Java 21
+
 ## Writing YAML
 
 The example below writes out the Java String as YAML.
