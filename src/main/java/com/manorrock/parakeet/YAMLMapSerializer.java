@@ -42,6 +42,12 @@ import java.util.Map.Entry;
  */
 public class YAMLMapSerializer implements YAMLSerializer {
 
+    /**
+     * Constructor.
+     */
+    public YAMLMapSerializer() {
+    }
+    
     @Override
     public void writeTo(Writer writer, Object object,
             YAMLSerializerContext context) throws IOException {

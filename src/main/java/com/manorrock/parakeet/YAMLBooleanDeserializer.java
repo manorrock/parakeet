@@ -39,6 +39,12 @@ import java.io.LineNumberReader;
  */
 public class YAMLBooleanDeserializer implements YAMLDeserializer {
 
+    /**
+     * Constructor.
+     */
+    public YAMLBooleanDeserializer() {
+    }
+    
     @Override
     public Object readFrom(LineNumberReader reader, YAMLDeserializerContext context) throws IOException {
         Boolean booleanValue = null;

@@ -39,6 +39,12 @@ import java.io.Writer;
  */
 public class YAMLNumberSerializer implements YAMLScalarSerializer {
 
+    /**
+     * Constructor.
+     */
+    public YAMLNumberSerializer() {
+    }
+    
     @Override
     public void writeTo(Writer writer, Object object,
             YAMLSerializerContext context) throws IOException {

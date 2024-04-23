@@ -41,6 +41,12 @@ import java.io.Writer;
  */
 public class YAMLLiteralBlockSerializer implements YAMLScalarSerializer {
 
+    /**
+     * Constructor.
+     */
+    public YAMLLiteralBlockSerializer() {
+    }
+    
     @Override
     public void writeTo(Writer writer, Object object,
             YAMLSerializerContext context) throws IOException {

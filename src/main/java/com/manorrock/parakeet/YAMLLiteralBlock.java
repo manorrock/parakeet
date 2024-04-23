@@ -40,6 +40,12 @@ public class YAMLLiteralBlock {
      * Stores the string.
      */
     private String string;
+
+    /**
+     * Constructor.
+     */
+    public YAMLLiteralBlock() {
+    }
     
     /**
      * Get the string.

@@ -39,6 +39,12 @@ import java.io.LineNumberReader;
  */
 public class YAMLReflectionDeserializer implements YAMLDeserializer {
 
+    /**
+     * Constructor.
+     */
+    public YAMLReflectionDeserializer() {
+    }
+    
     @Override
     public Object readFrom(LineNumberReader reader, YAMLDeserializerContext context) throws IOException {
         return null;

@@ -42,6 +42,12 @@ import java.util.Collection;
  */
 public class YAMLCollectionDeserializer implements YAMLDeserializer {
 
+    /**
+     * Constructor.
+     */
+    public YAMLCollectionDeserializer() {
+    }
+    
     @Override
     public Object readFrom(LineNumberReader reader, YAMLDeserializerContext context) throws IOException {
         Collection collection;

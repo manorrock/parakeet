@@ -42,6 +42,12 @@ import java.util.Iterator;
  */
 public class YAMLReflectionSerializer implements YAMLSerializer {
 
+    /**
+     * Constructor.
+     */
+    public YAMLReflectionSerializer() {
+    }
+    
     @Override
     public void writeTo(Writer writer, Object object,
             YAMLSerializerContext context) throws IOException {
